@@ -1,14 +1,30 @@
 package Main;
 
-import Main.Util.Signature.*;
-import Main.Util.ByteToHex;
+import Main.controller.WalletController;
+import Main.view.MainFrame;
+
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 public class Main {
 
-    public static  void  main(String[] args){
-        String words = "";
-        byte[] privateKey = PrivateKeyGenerator.randomPrivateKey();
-        byte[] ComPressedPublicKey  = PublicKeyGenerator.generateCompressedPublicKey(privateKey);
-        System.out.println(ByteToHex.BytesToHex(privateKey));
-        System.out.println(ByteToHex.BytesToHex(ComPressedPublicKey));
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            setLookAndFeel();
+            WalletController controller = new WalletController();
+            MainFrame frame = new MainFrame(controller);
+            controller.attachView(frame);
+            controller.start();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
+    }
+
+    private static void setLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {
+            // Use default
+        }
     }
 }
