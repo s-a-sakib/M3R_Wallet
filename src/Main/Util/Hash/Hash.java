@@ -37,4 +37,22 @@ public class Hash {
             throw new RuntimeException(e);
         }
     }
+
+    public static byte[] SHA3_256(byte[] text){
+        try{
+            MessageDigest md = MessageDigest.getInstance("SHA3-256");
+            return md.digest(text);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static byte[] SHA3_256(String text){
+        try{
+            MessageDigest md = MessageDigest.getInstance("SHA3-256");
+            return md.digest(text.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
