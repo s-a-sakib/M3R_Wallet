@@ -1,4 +1,4 @@
-package Main.Util.Signature;
+package Main.Util.KeyAddressGen;
 
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
