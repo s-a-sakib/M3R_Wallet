@@ -112,4 +112,13 @@ public class M3RAddressFactory {
             return s.replace("\\", "\\\\").replace("\"", "\\\"");
         }
     }
+    public static byte[] payload20FromCompressedPubKey(byte[] compressedPubKey) {
+        // keccak256(pubKeyCompressed) -> 32 bytes
+        byte[] k = Main.Util.Hash.Hash.KECCAK_256(compressedPubKey);
+        // last 20 bytes
+        byte[] out = new byte[20];
+        System.arraycopy(k, k.length - 20, out, 0, 20);
+        return out;
+    }
+
 }

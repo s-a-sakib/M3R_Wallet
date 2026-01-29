@@ -3,10 +3,11 @@ package Main.Util.Hash;
 import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
-import java.nio.charset.StandardCharsets;
+//import java.nio.charset.StandardCharsets;
 import org.bouncycastle.jcajce.provider.digest.Keccak;
 
 public class Hash {
+    private Hash(){}
     public static byte[] SHA_256(byte[] text){
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-256");
